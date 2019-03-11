@@ -91,10 +91,15 @@ class App extends Component {
       <div className="App">
         <Container>
           <h1>Address-Book-app</h1>
+          <Form.Group className="center" style={{width:"50%"}}>
+            <Form.Control type="text" placeholder="Search?" />
+          </Form.Group>
+
           <AddBooks books={this.state.addBooks}
             click={this.deleteAddressHandler} />
           <div>
             <h2 className="text-left">Add an new address:</h2>
+            
             <Form className="text-left" onSubmit = {this.addAddressHandler}>
               <Form.Group className="col-md-6">
                 <Form.Label>FirstName</Form.Label>
