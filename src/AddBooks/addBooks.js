@@ -4,18 +4,24 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 const addBooks = (props) =>{
-    let addBook = [...props.books];
-    let output = addBook.map( book =>
-        <div>
-            <div class="list-group0">
-                <Card class="border border-dark">
-                        <h4>{book.FirstName}{book.LastName}</h4>
-                        <h5>{book.Birthday}</h5>
-                        <p>{book.Telephone}</p>
-                </Card>
-            </div>
-        </div>
-    );
+    const addBook = [...props.books];
+    let output = addBook.map( (book) =>
+        <ListGroup.Item key={book.key}>
+            <Card className="border border-info">
+                <Card.Body className="text-center">
+                    <Button key={book.key}
+                        type="button" class="btn btn-sm" 
+                        style={{position:'absolute', top:'0px',right:'0px'}}
+                        onClick ={props.click.bind(null,book.key)}>
+                        trash
+                    </Button>
+                    <Card.Title>{book.FirstName} {book.LastName}</Card.Title>
+                    <Card.Text>{book.Birthday}<br />{book.Telephone}</Card.Text>
+                </Card.Body>
+            </Card>
+        </ListGroup.Item>
+        
+    )
     return output;
 };
 
