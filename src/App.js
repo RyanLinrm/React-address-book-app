@@ -55,7 +55,8 @@ class App extends Component {
     "FirstNameEntry" : '',
     "LastNameEntry" : '',
     "BirthdayEntry" : '',
-    "TelephoneEntry" : ''
+    "TelephoneEntry" : '',
+    "keyword" : ''
   }
   
   deleteAddressHandler = (index, e) => {
@@ -84,7 +85,10 @@ class App extends Component {
     this.setState({TelephoneEntry:''});
   }
 
-
+  searchHandler = (event) => {
+    this.setState({keyword : event.target.value});
+   
+}
 
   render() {
     return (
@@ -92,7 +96,8 @@ class App extends Component {
         <Container>
           <h1>Address-Book-app</h1>
           <Form.Group className="center" style={{width:"50%"}}>
-            <Form.Control type="text" placeholder="Search?" />
+            <Form.Control type="text" value ={this.state.keyword}
+              placeholder="Search?" onChange={this.searchHandler} />
           </Form.Group>
 
           <AddBooks books={this.state.addBooks}
