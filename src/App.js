@@ -60,11 +60,15 @@ class App extends Component {
   }
   
   deleteAddressHandler = (index, e) => {
+    let confirm = window.confirm("Are you sure?");
+    if(confirm){
     const addBooks = [...this.state.addBooks];
     let deleteAddressIndex = addBooks.findIndex(
       (address)=>address.key===index);
     addBooks.splice(deleteAddressIndex, 1);
     this.setState({addBooks : addBooks});
+    }
+
   }
 
   addAddressHandler = (event) =>{
