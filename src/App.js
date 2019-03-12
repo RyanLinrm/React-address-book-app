@@ -101,6 +101,7 @@ class App extends Component {
           </Form.Group>
 
           <AddBooks books={this.state.addBooks}
+            keyword={this.state.keyword}
             click={this.deleteAddressHandler} />
           <div>
             <h2 className="text-left">Add an new address:</h2>

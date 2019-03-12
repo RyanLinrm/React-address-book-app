@@ -4,8 +4,22 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 const addBooks = (props) =>{
-    const addBook = [...props.books];
-    let output = addBook.map( (book) =>
+    const keyw = props.keyword;
+    let addBooks = [];
+    let addBook = [...props.books];
+    if(keyw !== ''){
+        addBooks = addBook.filter( (address) => 
+            address.FirstName.toLowerCase().includes(keyw.toLowerCase()) ||
+            address.LastName.toLowerCase().includes(keyw.toLowerCase()) ||
+            address.Birthday.includes(keyw) ||
+            address.Telephone.includes(keyw) 
+        )
+    }
+    else {
+        addBooks = addBook;
+    }
+
+    let output = addBooks.map( (book) =>
         <ListGroup.Item key={book.key}>
             <Card className="border border-info">
                 <Card.Body className="text-center">
